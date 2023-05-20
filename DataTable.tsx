@@ -81,28 +81,24 @@ export function DataTable(props: DataTableProps) {
 		// </table>)
 
 
-		return (<table>
-			<tr>
-				{currentPosts.map((data, index) => {
-					return (
-						<tr class="border-2" key={index}>
-							{keys.map((k) => {
-								return (
-									<td class="border-2">{data[k as keyof typeof data]}</td>
-								);
-							})}
-						</tr>
-					);
-				})}
-			</tr>
-		</table>)
+		return (
+			// <table>
 
 
+			currentPosts.map((data, index) => {
+				return (
+					<tr class="border-2" key={index}>
+						{keys.map((k) => {
+							return (
+								<td class="border-2">{data[k as keyof typeof data]}</td>
+							);
+						})}
+					</tr>
+				);
+			})
 
-
-
-
-
+			// </table >
+		)
 
 	}
 
