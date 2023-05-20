@@ -83,7 +83,7 @@ export function DataTable(props: DataTableProps) {
 
 		return (<table>
 			<tr>
-				{props.dataArray.map((data, index) => {
+				{currentPosts.map((data, index) => {
 					return (
 						<tr class="border-2" key={index}>
 							{keys.map((k) => {
