@@ -10,17 +10,17 @@ export interface DataTableProps {
 export function DataTable(props: DataTableProps) {
 	const keys = Object.keys(props.dataArray[0]);
 	const [currentPage, setcurrentPage] = useState(1);
-	const postsPerPage = 15;
+	const rowsPerPage = 15;
 	const pageNumbers: number[] = [];
 
 
 	function showData() {
-		const indexOfLastPage = currentPage * postsPerPage;
-		const indexOfFirstPage = indexOfLastPage - postsPerPage;
-		const currentPosts = props.dataArray.slice(indexOfFirstPage, indexOfLastPage);
+		const indexOfLastPage = currentPage * rowsPerPage;
+		const indexOfFirstPage = indexOfLastPage - rowsPerPage;
+		const currentRows = props.dataArray.slice(indexOfFirstPage, indexOfLastPage);
 
 		return (
-			currentPosts.map((data, index) => {
+			currentRows.map((data, index) => {
 				return (
 					<tr class="border-2" key={index}>
 						{keys.map((k) => {
@@ -35,11 +35,11 @@ export function DataTable(props: DataTableProps) {
 	}
 
 	function showPagination() {
-		const totalPosts = props.dataArray.length;
+		const totalRows = props.dataArray.length;
 		const inactive = "px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 		const active = "z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
 
-		for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+		for (let i = 1; i <= Math.ceil(totalRows / rowsPerPage); i++) {
 			pageNumbers.push(i);
 		}
 
@@ -60,15 +60,15 @@ export function DataTable(props: DataTableProps) {
 						</a>
 					</li>
 					{pageNumbers.map((number, index) => {
-						console.log("currentPage" + currentPage + " number" + number);
+						// console.log("currentPage" + currentPage + " number" + number);
 						return (
 							<li
 								class={currentPage === number
 									? active
 									: inactive}
-									onClick={() => pagination(number)}
+								onClick={() => pagination(number)}
 							>
-									{number}
+								{number}
 							</li>
 						);
 					})}
@@ -86,8 +86,8 @@ export function DataTable(props: DataTableProps) {
 	}
 
 
-
 	useEffect(() => {
+		setcurrentPage(1);
 	}, [props]);
 
 	return (
