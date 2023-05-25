@@ -1,10 +1,13 @@
 // @ts-ignore
 import { useEffect, useRef, useState } from "./mod.ts";
+import { Pagino } from "../PaginoDeno_dev/mod.ts";
 
 
 export interface DataTableProps {
 	dataArray: object[];
 }
+
+function onChange() { }
 
 
 export function DataTable(props: DataTableProps) {
@@ -102,6 +105,17 @@ export function DataTable(props: DataTableProps) {
 				{showData()}
 			</table>
 			{showPagination()}
+			<Pagino
+				count={1}
+				showFirst={true}
+				showPrevious={true}
+				showNext={true}
+				showLast={true}
+				page={1}
+				siblingCount={1}
+				boundaryCount={1}
+				onChange={onChange}
+			/>
 
 		</div>
 
