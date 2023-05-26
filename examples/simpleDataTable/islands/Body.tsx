@@ -6,19 +6,24 @@ import { DataTable } from "../../../../DataTable_dev/mod.ts";
 
 export default function Body() {
   const dataArray = [
-    { id: 1, name: "John", age: 30, rand: 0 },
-    { id: 2, name: "Jane", age: 28, rand: 3 },
-    { id: 3, name: "Doe", age: 45, rand: 4 },
-    { id: 4, name: "Cindy", age: 35, rand: 1 },
+    { id: 1, name: "John", age: 30 },
+    { id: 2, name: "Jane", age: 27 },
+    { id: 3, name: "Doe", age: 45 },
+    { id: 4, name: "Cindy", age: 32 },
   ];
 
   const [myData, setMyData] = useState(dataArray);
 
 
   const dataArray2 = [
-    { id: 4, name: "John", age: 30, rand: 0 },
-    { id: 5, name: "Jane", age: 28, rand: 3 },
+    { id: "401", type: "None", price: "0.00" },
+    { id: "402", type: "Glazed" , price: "0.20"},
+    { id: "405", type: "Sugar", price: "0.15" },
+    { id: "403", type: "Chocolate" , price: "0.40"},
+    { id: "404", type: "Maple", price: "0.30" }
   ];
+
+
 
   function changeData() {
     setMyData(dataArray2);

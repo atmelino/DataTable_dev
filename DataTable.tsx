@@ -7,7 +7,6 @@ export interface DataTableProps {
 	dataArray: object[];
 }
 
-function onChange() { }
 
 
 export function DataTable(props: DataTableProps) {
@@ -16,9 +15,14 @@ export function DataTable(props: DataTableProps) {
 	const rowsPerPage = 15;
 	const pageNumbers: number[] = [];
 	const totalRows = props.dataArray.length;
-	const totalPages=Math.ceil(totalRows / rowsPerPage);
+	const totalPages = Math.ceil(totalRows / rowsPerPage);
 
+	function onChange(page: number, count: number) {
+		console.log("onChange called"+page);
+		setcurrentPage(page);
 
+	}
+	
 	function showData() {
 		const indexOfLastPage = currentPage * rowsPerPage;
 		const indexOfFirstPage = indexOfLastPage - rowsPerPage;
@@ -105,7 +109,6 @@ export function DataTable(props: DataTableProps) {
 
 				{showData()}
 			</table>
-			{showPagination()}
 			<Pagino
 				count={totalPages}
 				showFirst={true}
