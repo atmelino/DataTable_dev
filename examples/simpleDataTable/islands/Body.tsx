@@ -17,15 +17,20 @@ export default function Body() {
 
   const dataArray2 = [
     { id: "401", type: "None", price: "0.00" },
-    { id: "402", type: "Glazed" , price: "0.20"},
+    { id: "402", type: "Glazed", price: "0.20" },
     { id: "405", type: "Sugar", price: "0.15" },
-    { id: "403", type: "Chocolate" , price: "0.40"},
+    { id: "403", type: "Chocolate", price: "0.40" },
     { id: "404", type: "Maple", price: "0.30" }
   ];
 
-
-
   function changeData() {
+    setMyData(dataArray2);
+  }
+
+  function addRows() {
+    console.log("addRows()");
+    dataArray2.push({ id: "405", type: "almond", price: "0.30" },
+    )
     setMyData(dataArray2);
 
   }
@@ -41,10 +46,17 @@ export default function Body() {
       <div>
         <button
           type="button"
-          class="w-full bg-gray-700 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700"
+          class="w-1/6 bg-gray-700 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700"
           onClick={changeData}
         >
           change data
+        </button>
+        <button
+          type="button"
+          class="w-1/6 bg-gray-700 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700"
+          onClick={addRows}
+        >
+          add rows
         </button>
 
       </div>
