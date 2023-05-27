@@ -12,12 +12,13 @@ export function DataTable(props: DataTableProps) {
 	const rowsPerPage=props.rowsPerPage | 15;
 	const keys = Object.keys(props.dataArray[0]);
 	const [currentPage, setcurrentPage] = useState(1);
-	const [totalPages, settotalPages] = useState(props.dataArray.length/rowsPerPage);
+	const [totalPages, settotalPages] = useState(Math.ceil(props.dataArray.length/rowsPerPage));
 	const pageNumbers: number[] = [];
 
 	function onChange(page: number, count: number) {
 		console.log("onChange called"+page);
-		settotalPages(props.dataArray.length/rowsPerPage);
+		console.log("onChange called"+page);
+		
 		setcurrentPage(page);
 	}
 	
@@ -43,6 +44,7 @@ export function DataTable(props: DataTableProps) {
 
 
 	useEffect(() => {
+		settotalPages(Math.ceil(props.dataArray.length/rowsPerPage));
 		setcurrentPage(1);
 	}, [props]);
 
