@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "preact/hooks";
 import { DataTable } from "../../../../DataTable_dev/mod.ts";
 
 export default function Body() {
+  let buttonState = useRef(1);
+
   const dataArray = [
     { Id: "401", Name: "Apple", Price: "0.00" },
     { Id: "402", Name: "Banana", Price: "0.20" },
@@ -46,11 +48,38 @@ export default function Body() {
 
   function changeData() {
     setMyData(dataArray2);
+    buttonState.current = 2;
   }
 
   function addRows() {
-    console.log("addRows()");
     setMyData(dataArray2.concat(dataArray3));
+    buttonState.current = 3;
+  }
+
+  function showButtons() {
+
+    if (buttonState.current === 1) {
+      return (
+        <button
+          type="button"
+          class="w-1/6 bg-gray-700 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700"
+          onClick={changeData}
+        >
+          change data
+        </button>)
+    }
+
+    if (buttonState.current === 2) {
+      return (
+        <button
+          type="button"
+          class="w-1/6 bg-gray-700 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700"
+          onClick={addRows}
+        >
+          add rows
+        </button>
+      )
+    }
   }
 
   return (
@@ -60,24 +89,7 @@ export default function Body() {
           dataArray={myData}
         />
       </div>
-
-      <div>
-        <button
-          type="button"
-          class="w-1/6 bg-gray-700 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700"
-          onClick={changeData}
-        >
-          change data
-        </button>
-        <button
-          type="button"
-          class="w-1/6 bg-gray-700 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700"
-          onClick={addRows}
-        >
-          add rows
-        </button>
-
-      </div>
+      {showButtons()}
     </>
   );
 }
