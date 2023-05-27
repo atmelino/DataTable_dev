@@ -6,22 +6,146 @@ import { DataTable } from "../../../../DataTable_dev/mod.ts";
 
 export default function Body() {
   const dataArray = [
-    { id: 1, name: "John", age: 30 },
-    { id: 2, name: "Jane", age: 27 },
-    { id: 3, name: "Doe", age: 45 },
-    { id: 4, name: "Cindy", age: 32 },
+    { Id: "401", Name: "Apple", Price: "0.00" },
+    { Id: "402", Name: "Banana", Price: "0.20" },
+    { Id: "405", Name: "Cherry", Price: "0.15" },
+    { Id: "403", Name: "Chocolate", Price: "0.40" },
+    { Id: "404", Name: "Maple", Price: "0.30" },
+    { Id: "406", Name: "Almond", Price: "0.30" },
+    { Id: "407", Name: "Peanut", Price: "0.30" },
+    { Id: "408", Name: "Butter", Price: "0.30" }
   ];
+
+  const dataArray2 = [
+    {
+      userId: 1,
+      "id": 1,
+      "title": "delectus aut autem",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 2,
+      "title": "quis ut nam facilis et officia qui",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 3,
+      "title": "fugiat veniam minus",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 4,
+      "title": "et porro tempora",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 5,
+      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 6,
+      "title": "qui ullam ratione quibusdam voluptatem quia omnis",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 7,
+      "title": "illo expedita consequatur quia in",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 8,
+      "title": "quo adipisci enim quam ut ab",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 9,
+      "title": "molestiae perspiciatis ipsa",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 10,
+      "title": "illo est ratione doloremque quia maiores aut",
+      "completed": true
+    },
+  ];
+
+  const dataArray3 = [
+    {
+      userId: 1,
+      "id": 11,
+      "title": "vero rerum temporibus dolor",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 12,
+      "title": "ipsa repellendus fugit nisi",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 13,
+      "title": "et doloremque nulla",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 14,
+      "title": "repellendus sunt dolores architecto voluptatum",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 15,
+      "title": "ab voluptatum amet voluptas",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 16,
+      "title": "accusamus eos facilis sint et aut voluptatem",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 17,
+      "title": "quo laboriosam deleniti aut qui",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 18,
+      "title": "dolorum est consequatur ea mollitia in culpa",
+      "completed": false
+    },
+    {
+      userId: 1,
+      "id": 19,
+      "title": "molestiae ipsa aut voluptatibus pariatur dolor nihil",
+      "completed": true
+    },
+    {
+      userId: 1,
+      "id": 20,
+      "title": "ullam nobis libero sapiente ad optio sint",
+      "completed": true
+    },
+  ];
+
 
   const [myData, setMyData] = useState(dataArray);
 
 
-  const dataArray2 = [
-    { id: "401", type: "None", price: "0.00" },
-    { id: "402", type: "Glazed", price: "0.20" },
-    { id: "405", type: "Sugar", price: "0.15" },
-    { id: "403", type: "Chocolate", price: "0.40" },
-    { id: "404", type: "Maple", price: "0.30" }
-  ];
 
   function changeData() {
     setMyData(dataArray2);
@@ -29,9 +153,15 @@ export default function Body() {
 
   function addRows() {
     console.log("addRows()");
-    dataArray2.push({ id: "405", type: "almond", price: "0.30" },
-    )
-    setMyData(dataArray2);
+    // dataArray2.push({ Id: "405", Name: "Milk", Price: "0.30" });
+    // dataArray2.push({ Id: "405", Name: "Icecream", Price: "0.30" });
+    // dataArray2.push({ Id: "405", Name: "Rice", Price: "0.30" });
+    // dataArray2.push({ Id: "405", Name: "Chicken", Price: "0.30" });
+    // dataArray2.push({ Id: "405", Name: "Carrots", Price: "0.30" });
+    // dataArray2.push({ Id: "405", Name: "Almond", Price: "0.30" });
+    // dataArray2.push({ Id: "405", Name: "Almond", Price: "0.30" });
+
+    setMyData(dataArray2.concat(dataArray3));
 
   }
 
