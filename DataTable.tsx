@@ -5,20 +5,20 @@ import { Pagino } from "../PaginoDeno_dev/mod.ts";
 
 export interface DataTableProps {
 	dataArray: object[];
+	rowsPerPage?: number 
 }
 
 export function DataTable(props: DataTableProps) {
+	const rowsPerPage=props.rowsPerPage | 15;
 	const keys = Object.keys(props.dataArray[0]);
 	const [currentPage, setcurrentPage] = useState(1);
-	const rowsPerPage = 15;
+	const [totalPages, settotalPages] = useState(props.dataArray.length/rowsPerPage);
 	const pageNumbers: number[] = [];
-	const totalRows = props.dataArray.length;
-	const totalPages = Math.ceil(totalRows / rowsPerPage);
 
 	function onChange(page: number, count: number) {
 		console.log("onChange called"+page);
+		settotalPages(props.dataArray.length/rowsPerPage);
 		setcurrentPage(page);
-
 	}
 	
 	function showData() {
