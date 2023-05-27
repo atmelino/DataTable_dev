@@ -16,9 +16,7 @@ export function DataTable(props: DataTableProps) {
 	const pageNumbers: number[] = [];
 
 	function onChange(page: number, count: number) {
-		console.log("onChange called"+page);
-		console.log("onChange called"+page);
-		
+		// console.log("onChange called"+page);		
 		setcurrentPage(page);
 	}
 	
