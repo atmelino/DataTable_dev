@@ -15,8 +15,7 @@ export function DataTable(props: DataTableProps) {
 	const [totalPages, settotalPages] = useState(Math.ceil(props.dataArray.length/rowsPerPage));
 	const pageNumbers: number[] = [];
 
-	function onChange(page: number, count: number) {
-		// console.log("onChange called"+page);		
+	function onChange(page: number) {
 		setcurrentPage(page);
 	}
 	
@@ -39,7 +38,6 @@ export function DataTable(props: DataTableProps) {
 			})
 		)
 	}
-
 
 	useEffect(() => {
 		settotalPages(Math.ceil(props.dataArray.length/rowsPerPage));
@@ -68,8 +66,6 @@ export function DataTable(props: DataTableProps) {
 				boundaryCount={1}
 				onChange={onChange}
 			/>
-
 		</div>
-
 	);
 }
