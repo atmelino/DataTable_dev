@@ -1,6 +1,5 @@
 // @ts-ignore
 import { useEffect, useRef, useState } from "./mod.ts";
-// import { Pagino } from "../PaginoDeno_dev/mod.ts";
 import { Pagino } from "https://deno.land/x/paginodeno@v0.0.1-alpha/mod.ts";
 
 export interface DataTableProps {
