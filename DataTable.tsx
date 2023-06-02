@@ -39,9 +39,7 @@ export function DataTable(props: DataTableProps) {
 	}
 
 	useEffect(() => {
-		console.log(rowsPerPage);
 		settotalPages(Math.ceil(props.dataArray.length/rowsPerPage));
-		// setcurrentPage(1);
 	}, [props]);
 
 	return (
