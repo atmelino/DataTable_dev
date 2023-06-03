@@ -29,6 +29,8 @@ export default function Body() {
   const [myData, setMyData] = useState(dataArray);
   // const [radio, setRadio] = useState("option1");
   const radio = useRef("option2");
+  const intervalRef = useRef<HTMLInputElement | null>(null);
+  const [disabled, setDisabled] = useState(" text-gray-300");
 
   function handleOptionChange(value: string) {
     console.log("handleOptionChange enter")
@@ -36,6 +38,19 @@ export default function Body() {
     radio.current = value;
   }
 
+  const handleChange = () => {
+    // setDisabled(yAxisAuto.current ? "text-black" : " text-gray-300");
+    console.log("handleChange enter")
+
+  };
+  const handleChangeInterval = () => {
+    console.log("handleChange called")
+    if (intervalRef?.current?.value)
+      setInterval((+intervalRef?.current?.value) * 1000);
+
+  };
+
+  
   return (
     <>
       <div>
@@ -66,6 +81,23 @@ export default function Body() {
             Custom
           </label>
         </div>
+
+        <div class="space-x-3">
+          <label>Update Interval:</label>
+          <input
+            class={"w-1/6 border-1 border-gray-500 h-8 rounded p-2"}
+            type="number"
+            id="interval"
+            min="1" max="60"
+            ref={intervalRef}
+            onChange={handleChangeInterval}
+          />
+          <label>seconds</label>
+        </div>
+
+        <input type="checkbox" onChange={handleChange} />
+            <label class={disabled}>manual</label>
+
       </div>
 
       <div class="flex flex-row justify-evenly">
