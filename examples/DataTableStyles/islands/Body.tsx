@@ -8,7 +8,6 @@ import { DataTable } from "../../../../DataTable_dev/mod.ts";
 export default function Body() {
   let buttonState = useRef(1);
 
-
   const mystyle: DataTableStyle = {
     table: "table-auto border-separate border border-green-700",
     headerrow: "border border-red-400",
@@ -29,7 +28,7 @@ export default function Body() {
   const [myData, setMyData] = useState(dataArray);
   // const [radio, setRadio] = useState("option1");
   const radio = useRef("option2");
-  const intervalRef = useRef<HTMLInputElement | null>(null);
+  const optionRef = useRef<HTMLInputElement | null>(null);
   const [disabled, setDisabled] = useState(" text-gray-300");
 
   function handleOptionChange(value: string) {
@@ -38,73 +37,53 @@ export default function Body() {
     radio.current = value;
   }
 
-  const handleChange = () => {
+  const handleChange = (e: Event) => {
     // setDisabled(yAxisAuto.current ? "text-black" : " text-gray-300");
     console.log("handleChange enter")
-
-  };
-  const handleChangeInterval = () => {
-    console.log("handleChange called")
-    if (intervalRef?.current?.value)
-      setInterval((+intervalRef?.current?.value) * 1000);
-
+    console.log(JSON.stringify(optionRef))
+    console.log(JSON.stringify(e))
   };
 
-  
+
   return (
     <>
-      <div>
-        <h2>Choose a table style:</h2>
-        <div className="radio">
-          <label>
-            <input type="radio" value="option1"
-              checked={radio.current === 'option1'}
-              onChange={handleOptionChange("option1")} />
-            colorful
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="option2"
-              // checked={radio.current === 'option2'}
-              checked={true}
-              onChange={handleOptionChange("option2")} />
-            Option 2
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="option3"
-              // checked={radio.current === 'option3'}
-              checked={true}
-              onChange={handleOptionChange("option3")} />
-            Custom
-          </label>
-        </div>
+      <div class="mb-8 p-2 w-full flex flex-wrap bg-grey-light">
+        <div class=" border-8 w-full lg:w-1/4 bg-grey">
+          <h2>Choose a table style:</h2>
+          <div class="space-x-3">
+            <label>
+              <input type="radio" value="option1"
+                checked={radio.current === 'option1'}
+                onChange={handleOptionChange("option1")} />
+              colorful
+            </label>
+          </div>
+          <div className="radio">
+            <label>
+              <input type="radio" value="option2"
+                // checked={radio.current === 'option2'}
+                checked={true}
+                onChange={handleOptionChange("option2")} />
+              Option 2
+            </label>
+          </div>
 
-        <div class="space-x-3">
-          <label>Update Interval:</label>
           <input
-            class={"w-1/6 border-1 border-gray-500 h-8 rounded p-2"}
-            type="number"
-            id="interval"
-            min="1" max="60"
-            ref={intervalRef}
-            onChange={handleChangeInterval}
+            type="checkbox"
+            onChange={handleChange}
+            ref={optionRef}
           />
-          <label>seconds</label>
+          <label class={disabled}>manual</label>
+
         </div>
 
-        <input type="checkbox" onChange={handleChange} />
-            <label class={disabled}>manual</label>
+        <div class="border-8 w-full lg:w-3/4 bg-grey">
+          <DataTable
+            dataArray={myData}
+            style={mystyle}
+          />
+        </div>
 
-      </div>
-
-      <div class="flex flex-row justify-evenly">
-        <DataTable
-          dataArray={myData}
-          style={mystyle}
-        />
       </div>
     </>
   );
