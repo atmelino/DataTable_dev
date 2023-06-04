@@ -42,6 +42,7 @@ export default function Body() {
     console.log("handleChange enter")
     console.log(JSON.stringify(optionRef))
     console.log(JSON.stringify(e))
+    console.log(JSON.stringify(optionRef.current.checked))
   };
 
 
@@ -70,7 +71,9 @@ export default function Body() {
 
           <input
             type="checkbox"
+            value="test"
             onChange={handleChange}
+            
             ref={optionRef}
           />
           <label class={disabled}>manual</label>
