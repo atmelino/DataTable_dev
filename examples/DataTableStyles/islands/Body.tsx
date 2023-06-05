@@ -6,12 +6,16 @@ import { DataTable } from "../../../../DataTable_dev/mod.ts";
 // import { DataTable } from "https://deno.land/x/datatable@v0.0.4-alpha/mod.ts";
 
 export default function Body() {
-  let buttonState = useRef(1);
-
-  const mystyle: DataTableStyle = {
-    table: "table-auto border-separate border border-green-700",
+  const colorful: DataTableStyle = {
+    table: "bg-gradient-to-br from-white via-[#00bfd8] to-[#0083f5] table-auto border-separate border border-green-700",
     headerrow: "border border-red-400",
     row: "border border-yellow-200"
+  }
+
+  const formal: DataTableStyle = {
+    table: "table-auto border-separate border border-green-700",
+    headerrow: "border border-brown-400",
+    row: "border border-brown-200"
   }
 
   const dataArray = [
@@ -26,64 +30,51 @@ export default function Body() {
   ];
 
   const [myData, setMyData] = useState(dataArray);
-  // const [radio, setRadio] = useState("option1");
-  const radio = useRef("option2");
-  const optionRef = useRef<HTMLInputElement | null>(null);
+  const [myStyle, setMyStyle] = useState(colorful);
   const [disabled, setDisabled] = useState(" text-gray-300");
 
-  function handleOptionChange(value: string) {
-    console.log("handleOptionChange enter")
-    // setRadio(value);
-    radio.current = value;
+
+
+  function handleNavigation(page: string) {
+    console.log(page)
+    if (page === "formal")
+      setMyStyle(formal);
+    if (page === "colorful")
+      setMyStyle(colorful);
   }
-
-  const handleChange = (e: Event) => {
-    // setDisabled(yAxisAuto.current ? "text-black" : " text-gray-300");
-    console.log("handleChange enter")
-    console.log(JSON.stringify(optionRef))
-    console.log(JSON.stringify(e))
-    console.log(JSON.stringify(optionRef.current.checked))
-  };
-
 
   return (
     <>
       <div class="mb-8 p-2 w-full flex flex-wrap bg-grey-light">
         <div class=" border-8 w-full lg:w-1/4 bg-grey">
           <h2>Choose a table style:</h2>
-          <div class="space-x-3">
-            <label>
-              <input type="radio" value="option1"
-                checked={radio.current === 'option1'}
-                onChange={handleOptionChange("option1")} />
-              colorful
-            </label>
-          </div>
-          <div className="radio">
-            <label>
-              <input type="radio" value="option2"
-                // checked={radio.current === 'option2'}
-                checked={true}
-                onChange={handleOptionChange("option2")} />
-              Option 2
-            </label>
-          </div>
 
-          <input
-            type="checkbox"
-            value="test"
-            onChange={handleChange}
-            
-            ref={optionRef}
-          />
-          <label class={disabled}>manual</label>
+          <ul class="inline-flex w-full items-center ">
+            <li
+              onClick={() => handleNavigation("colorful")}
+            >
+              <label class="border">
+                colorful
+              </label>
+            </li>
+          </ul>
+
+          <ul class="inline-flex w-full items-center ">
+            <li
+              onClick={() => handleNavigation("formal")}
+            >
+              <label class="border">
+                formal
+              </label>
+            </li>
+          </ul>
 
         </div>
 
         <div class="border-8 w-full lg:w-3/4 bg-grey">
           <DataTable
             dataArray={myData}
-            style={mystyle}
+            style={myStyle}
           />
         </div>
 
