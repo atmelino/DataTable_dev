@@ -13,10 +13,11 @@ export default function Body() {
   }
 
   const formal: DataTableStyle = {
-    table: "table-auto border-separate border border-green-700",
+    table: "font-serif text-[#312222] table-auto bg-[#f1ecec] border-separate border border-green-700",
     headerrow: "border border-brown-400",
     row: "border border-brown-200"
   }
+
 
   const dataArray = [
     { Id: "401", Name: "Apple", Price: "0.30", Aisle: "Fruit" },
@@ -30,10 +31,7 @@ export default function Body() {
   ];
 
   const [myData, setMyData] = useState(dataArray);
-  const [myStyle, setMyStyle] = useState(colorful);
-  const [disabled, setDisabled] = useState(" text-gray-300");
-
-
+  const [myStyle, setMyStyle] = useState(formal);
 
   function handleNavigation(page: string) {
     console.log(page)
@@ -45,33 +43,40 @@ export default function Body() {
 
   return (
     <>
-      <div class="mb-8 p-2 w-full flex flex-wrap bg-grey-light">
-        <div class=" border-8 w-full lg:w-1/4 bg-grey">
-          <h2>Choose a table style:</h2>
+      {/* <div class="mb-8 p-2 w-full flex flex-wrap bg-grey-light">
+        <div class=" border-8 w-full lg:w-1/4 bg-grey"> */}
 
-          <ul class="inline-flex w-full items-center ">
-            <li
-              onClick={() => handleNavigation("colorful")}
-            >
-              <label class="border">
-                colorful
-              </label>
-            </li>
-          </ul>
+      <div class="mb-8 p-2 w-full flex flex-wrap">
+        <div>
+        <h2>Choose a table style:</h2>
 
-          <ul class="inline-flex w-full items-center ">
-            <li
-              onClick={() => handleNavigation("formal")}
-            >
-              <label class="border">
-                formal
-              </label>
-            </li>
-          </ul>
-
+        <div class=" inline-flex flex-col w-full ">
+          <div class="bg-teal-400 p-4 m-2">
+            <label
+              class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
+              onClick={() => handleNavigation("colorful")}>
+              colorful
+            </label>
+          </div>
+          <div class="bg-teal-400 p-4 m-2">
+            <label
+              class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
+              onClick={() => handleNavigation("formal")}>
+              formal
+            </label>
+          </div>
+          <div class="bg-teal-400 p-4 m-2">
+            <label
+              class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
+              onClick={() => handleNavigation("cards")}>
+              cards
+            </label>
+          </div>
         </div>
 
-        <div class="border-8 w-full lg:w-3/4 bg-grey">
+      </div>
+
+        <div class="border-8 w-full lg:w-3/4">
           <DataTable
             dataArray={myData}
             style={myStyle}
