@@ -18,6 +18,12 @@ export default function Body() {
     row: "border border-brown-200"
   }
 
+  const cards: DataTableStyle = {
+    table: "table-auto",
+    headerrow: "border border-brown-400",
+    row: "border border-brown-200"
+  }
+
 
   const dataArray = [
     { Id: "401", Name: "Apple", Price: "0.30", Aisle: "Fruit" },
@@ -39,6 +45,8 @@ export default function Body() {
       setMyStyle(formal);
     if (page === "colorful")
       setMyStyle(colorful);
+    if (page === "cards")
+      setMyStyle(cards);
   }
 
   return (
@@ -46,37 +54,38 @@ export default function Body() {
       {/* <div class="mb-8 p-2 w-full flex flex-wrap bg-grey-light">
         <div class=" border-8 w-full lg:w-1/4 bg-grey"> */}
 
-      <div class="mb-8 p-2 w-full flex flex-wrap">
-        <div>
-        <h2>Choose a table style:</h2>
+      <div class="flex flex-row">
+        <div class="m-4 p-2 w-full flex flex-wrap">
+          <h2>Choose a table style:</h2>
 
-        <div class=" inline-flex flex-col w-full ">
-          <div class="bg-teal-400 p-4 m-2">
-            <label
-              class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
-              onClick={() => handleNavigation("colorful")}>
-              colorful
-            </label>
+          <div class=" inline-flex flex-col w-full ">
+            <div class="bg-teal-400 p-4 m-2">
+              <label
+                class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
+                onClick={() => handleNavigation("colorful")}>
+                colorful
+              </label>
+            </div>
+            <div class="bg-teal-400 p-4 m-2">
+              <label
+                class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
+                onClick={() => handleNavigation("formal")}>
+                formal
+              </label>
+            </div>
+            <div class="bg-teal-400 p-4 m-2">
+              <label
+                class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
+                onClick={() => handleNavigation("cards")}>
+                cards
+              </label>
+            </div>
           </div>
-          <div class="bg-teal-400 p-4 m-2">
-            <label
-              class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
-              onClick={() => handleNavigation("formal")}>
-              formal
-            </label>
-          </div>
-          <div class="bg-teal-400 p-4 m-2">
-            <label
-              class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
-              onClick={() => handleNavigation("cards")}>
-              cards
-            </label>
-          </div>
+
         </div>
 
-      </div>
-
-        <div class="border-8 w-full lg:w-3/4">
+        {/* <div class="border-8 w-full lg:w-3/4"> */}
+        <div class="m-4 p-2 w-full lg:w-3/4">
           <DataTable
             dataArray={myData}
             style={myStyle}
