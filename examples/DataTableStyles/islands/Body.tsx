@@ -7,9 +7,9 @@ import { DataTable } from "../../../../DataTable_dev/mod.ts";
 
 export default function Body() {
   const colorful: DataTableStyle = {
-    table: "bg-gradient-to-br from-white via-[#00bfd8] to-[#0083f5] table-auto border-separate border border-green-700",
-    headerrow: "border border-red-400",
-    row: "border border-yellow-200"
+    table: "bg-gradient-to-br from-[#00bfd8] to-[#0083f5] table-auto border-separate border rounded border-green-700",
+    headerrow: "border border-red-400 text-red-500",
+    row: "border border-yellow-200 text-yellow-200"
   }
 
   const formal: DataTableStyle = {
@@ -37,7 +37,7 @@ export default function Body() {
   ];
 
   const [myData, setMyData] = useState(dataArray);
-  const [myStyle, setMyStyle] = useState(formal);
+  const [myStyle, setMyStyle] = useState(colorful);
 
   function handleNavigation(page: string) {
     console.log(page)
@@ -55,7 +55,7 @@ export default function Body() {
         <div class=" border-8 w-full lg:w-1/4 bg-grey"> */}
 
       <div class="flex flex-row">
-        <div class="m-4 p-2 w-full flex flex-wrap">
+        <div class="m-4 p-2 w-1/8 flex flex-wrap">
           <h2>Choose a table style:</h2>
 
           <div class=" inline-flex flex-col w-full ">
@@ -84,8 +84,7 @@ export default function Body() {
 
         </div>
 
-        {/* <div class="border-8 w-full lg:w-3/4"> */}
-        <div class="m-4 p-2 w-full lg:w-3/4">
+        <div class="m-4 p-2 w-full flex-auto">
           <DataTable
             dataArray={myData}
             style={myStyle}
