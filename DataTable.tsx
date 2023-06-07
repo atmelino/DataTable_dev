@@ -4,8 +4,11 @@ import { Pagino } from "https://deno.land/x/paginodeno@v0.0.1-alpha/mod.ts";
 
 export interface DataTableStyle {
 	table: "";
-	headerrow: "";
-	row: "";
+	thead:"";
+	header_tr: "";
+	th: "";
+	body_tr: "";
+	td: "";
 }
 
 export interface DataTableProps {
@@ -18,8 +21,8 @@ export function DataTable(props: DataTableProps) {
 	const tablestyle = props.style ||
 	{
 		table: "table align-items-center justify-content-center mb-0",
-		headerrow: "border-2 border-blue-800",
-		row: "border border-blue-800 bg-green-200"
+		th: "border-2 border-blue-800",
+		tr: "border border-blue-800 bg-green-200"
 	}
 		;
 	const rowsPerPage = props.rowsPerPage || 15;
@@ -41,10 +44,10 @@ export function DataTable(props: DataTableProps) {
 		return (
 			currentRows.map((data, index) => {
 				return (
-					<tr class={tablestyle.row} key={index}>
+					<tr class={tablestyle.tr} key={index}>
 						{keys.map((k) => {
 							return (
-								<td class={tablestyle.row}>{data[k as keyof typeof data]}</td>
+								<td class={tablestyle.body_tr}>{data[k as keyof typeof data]}</td>
 							);
 						})}
 					</tr>
@@ -54,8 +57,7 @@ export function DataTable(props: DataTableProps) {
 	}
 
 	useEffect(() => {
-		console.log(tablestyle);
-		console.log(tablestyle.headerrow);
+		console.log(JSON.stringify(tablestyle, null, 4));
 
 		settotalPages(Math.ceil(props.dataArray.length / rowsPerPage));
 	}, [props]);
@@ -64,9 +66,9 @@ export function DataTable(props: DataTableProps) {
 		<div>
 			<table class={tablestyle.table}>
 				<thead>
-					<tr class={tablestyle.headerrow}>
+					<tr class={tablestyle.header_tr}>
 						{keys.map((data, index) => {
-							return <th class={tablestyle.headerrow}>{keys[index]}</th>;
+							return <th class={tablestyle.th}>{keys[index]}</th>;
 						})}
 					</tr>
 				</thead>

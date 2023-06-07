@@ -8,20 +8,22 @@ import { DataTable } from "../../../../DataTable_dev/mod.ts";
 export default function Body() {
   const colorful: DataTableStyle = {
     table: "bg-gradient-to-br from-[#00bfd8] to-[#0083f5] table-auto border-separate border rounded border-green-700",
-    headerrow: "border border-red-400 text-red-500",
-    row: "border border-yellow-200 text-yellow-200"
+    header_tr: "",
+    th: "border-red-400 text-red-500",
+    body_tr: " border-yellow-200 text-yellow-200",
+    td: "" 
   }
 
   const formal: DataTableStyle = {
-    table: "font-serif text-[#312222] table-auto bg-[#f1ecec] border-separate border border-green-700",
-    headerrow: "border border-brown-400",
-    row: "border border-brown-200"
+    table: "font-serif text-[#312222] table-auto bg-[#f1ecec] border-separate border rounded border-green-700",
+    th: "border border-brown-400",
+    tr: "border border-brown-200"
   }
 
   const cards: DataTableStyle = {
     table: " table-auto border-separate ",
-    headerrow: "bg-gray-300 border rounded border-gray-300 ...",
-    row: "bg-gray-100 border rounded border-gray-100 ..."
+    th: "bg-gray-300 border rounded border-gray-300 ...",
+    tr: "bg-gray-100 border rounded border-gray-100 ..."
   }
 
 
@@ -37,7 +39,7 @@ export default function Body() {
   ];
 
   const [myData, setMyData] = useState(dataArray);
-  const [myStyle, setMyStyle] = useState(cards);
+  const [myStyle, setMyStyle] = useState(colorful);
 
   function handleNavigation(page: string) {
     console.log(page)
