@@ -26,6 +26,15 @@ export default function Body() {
     tr: "bg-gray-100 border rounded border-gray-100 ..."
   }
 
+  const clean: DataTableStyle = {
+    table: "min-w-full text-left text-sm font-light",
+    thead: "border-b font-medium dark:border-neutral-500",
+    header_tr: "",
+    th: "px-6 py-4",
+    body_tr: "border-b dark:border-neutral-500",
+    td: "whitespace-nowrap px-6 py-4" 
+  }
+
 
   const dataArray = [
     { Id: "401", Name: "Apple", Price: "0.30", Aisle: "Fruit" },
@@ -39,7 +48,7 @@ export default function Body() {
   ];
 
   const [myData, setMyData] = useState(dataArray);
-  const [myStyle, setMyStyle] = useState(colorful);
+  const [myStyle, setMyStyle] = useState(clean);
 
   function handleNavigation(page: string) {
     console.log(page)
@@ -47,8 +56,10 @@ export default function Body() {
       setMyStyle(formal);
     if (page === "colorful")
       setMyStyle(colorful);
-    if (page === "cards")
+      if (page === "cards")
       setMyStyle(cards);
+      if (page === "clean")
+      setMyStyle(clean);
   }
 
   return (
@@ -80,6 +91,13 @@ export default function Body() {
                 class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
                 onClick={() => handleNavigation("cards")}>
                 cards
+              </label>
+            </div>
+            <div class="bg-teal-400 p-4 m-2">
+              <label
+                class="w-1/6 border-1 border-gray-500 h-8 rounded p-2"
+                onClick={() => handleNavigation("clean")}>
+                clean
               </label>
             </div>
           </div>

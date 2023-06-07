@@ -65,7 +65,7 @@ export function DataTable(props: DataTableProps) {
 	return (
 		<div>
 			<table class={tablestyle.table}>
-				<thead>
+				<thead class={tablestyle.thead}>
 					<tr class={tablestyle.header_tr}>
 						{keys.map((data, index) => {
 							return <th class={tablestyle.th}>{keys[index]}</th>;
