@@ -11,7 +11,7 @@ export default function Body() {
     header_tr: "",
     th: "border-red-400 text-red-500",
     body_tr: " border-yellow-200 text-yellow-200",
-    td: "" 
+    td: ""
   }
 
   const formal: DataTableStyle = {
@@ -28,11 +28,12 @@ export default function Body() {
 
   const clean: DataTableStyle = {
     table: "min-w-full text-left text-sm font-light",
-    thead: "border-b font-medium dark:border-neutral-500",
-    header_tr: "",
-    th: "px-6 py-4",
-    body_tr: "border-b dark:border-neutral-500",
-    td: "whitespace-nowrap px-6 py-4" 
+    thead: "border-b text-left font-medium dark:border-neutral-400",
+    header_tr: "text-left",
+    th: "px-4 py-2",
+    tbody: "",
+    body_tr: "border-b dark:border-neutral-400",
+    td: "whitespace-nowrap px-4 py-2"
   }
 
 
@@ -56,9 +57,9 @@ export default function Body() {
       setMyStyle(formal);
     if (page === "colorful")
       setMyStyle(colorful);
-      if (page === "cards")
+    if (page === "cards")
       setMyStyle(cards);
-      if (page === "clean")
+    if (page === "clean")
       setMyStyle(clean);
   }
 
@@ -110,8 +111,8 @@ export default function Body() {
             style={myStyle}
           />
         </div>
-
       </div>
+
     </>
   );
 }

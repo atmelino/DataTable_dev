@@ -4,9 +4,10 @@ import { Pagino } from "https://deno.land/x/paginodeno@v0.0.1-alpha/mod.ts";
 
 export interface DataTableStyle {
 	table: "";
-	thead:"";
+	thead: "";
 	header_tr: "";
 	th: "";
+	tbody: "";
 	body_tr: "";
 	td: "";
 }
@@ -31,7 +32,6 @@ export function DataTable(props: DataTableProps) {
 	const [totalPages, settotalPages] = useState(Math.ceil(props.dataArray.length / rowsPerPage));
 	const pageNumbers: number[] = [];
 
-
 	function onChange(page: number) {
 		setcurrentPage(page);
 	}
@@ -44,10 +44,10 @@ export function DataTable(props: DataTableProps) {
 		return (
 			currentRows.map((data, index) => {
 				return (
-					<tr class={tablestyle.tr} key={index}>
+					<tr class={tablestyle.body_tr} key={index}>
 						{keys.map((k) => {
 							return (
-								<td class={tablestyle.body_tr}>{data[k as keyof typeof data]}</td>
+								<td class={tablestyle.td}>{data[k as keyof typeof data]}</td>
 							);
 						})}
 					</tr>
@@ -72,7 +72,9 @@ export function DataTable(props: DataTableProps) {
 						})}
 					</tr>
 				</thead>
-				{showData()}
+				<tbody class={tablestyle.tbody}>
+					{showData()}
+				</tbody>
 			</table>
 			<Pagino
 				count={totalPages}
