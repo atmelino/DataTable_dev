@@ -23,7 +23,8 @@ export default function Body() {
   const cards: DataTableStyle = {
     table: " table-auto border-separate ",
     th: "bg-gray-300 border rounded border-gray-300 ...",
-    tr: "bg-gray-100 border rounded border-gray-100 ..."
+    body_tr: "bg-gray-100 border rounded border-gray-100 ...",
+    td: "px-2 py-1"
   }
 
   const clean: DataTableStyle = {
@@ -49,7 +50,7 @@ export default function Body() {
   ];
 
   const [myData, setMyData] = useState(dataArray);
-  const [myStyle, setMyStyle] = useState(clean);
+  const [myStyle, setMyStyle] = useState(cards);
 
   function handleNavigation(page: string) {
     console.log(page)
@@ -112,6 +113,7 @@ export default function Body() {
           />
         </div>
       </div>
+
 
     </>
   );
