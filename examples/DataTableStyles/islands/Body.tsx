@@ -66,9 +66,6 @@ export default function Body() {
 
   return (
     <>
-      {/* <div class="mb-8 p-2 w-full flex flex-wrap bg-grey-light">
-        <div class=" border-8 w-full lg:w-1/4 bg-grey"> */}
-
       <div class="flex flex-row">
         <div class="m-4 p-2 w-1/8 flex flex-wrap">
           <h2>Choose a table style:</h2>
@@ -103,7 +100,6 @@ export default function Body() {
               </label>
             </div>
           </div>
-
         </div>
 
         <div class="m-4 p-2 w-full flex-auto">
@@ -113,7 +109,6 @@ export default function Body() {
           />
         </div>
       </div>
-
 
     </>
   );
