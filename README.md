@@ -1,7 +1,7 @@
 # DataTable
 deno component for a dynamic data table based on data object stored in javascript array.
 
-# Examples
+## Examples
 ![datatable01](images/datatable01.png)
 ![datatable02](images/datatable02.png)
 
